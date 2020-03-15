@@ -168,7 +168,7 @@ appleIndex([ 'orange', 'grape', 'apple', 'banana', 'mango' ]);
 
 function isItAnApple(arr) {
   let newArray = [];
-  for (let i = 0; i <= arr.length; i++) {
+  for (let i = 0; i < arr.length; i++) {
       if (arr[i] == 'apple') {
       newArray.push(true);
     } else {
@@ -177,7 +177,8 @@ function isItAnApple(arr) {
   }
   return newArray;
 }
-isItAnApple([ 'orange', 'apple', 'banana', 'apples', 'apple', 'mango' ]);
+isItAnApple(['orange', 'apple', 'banana', 'apples', 'apple', 'mango']);
+
 
 
 // ⭐️ Example Test Data ⭐️
@@ -269,12 +270,12 @@ let carYearList = [];
 
 function getModelYears(inventory) {
   let carYearList = [];
-  for (let i = 0; i <= inventory.length; i++) {
+  for (let i = 0; i < inventory.length; i++) {
     carYearList.push(inventory[i].car_year);
   }
   return carYearList;
 }
-console.log(getModelYears);
+console.log(getModelYears(inventory));
 
 /**
  * ### Challenge `getCarInfoById`
@@ -290,9 +291,15 @@ console.log(getModelYears);
  * For example, if getCarInfoById is invoked with the inventory and the number 1,
  * it will return `This is a Lincoln Navigator`.
 */
-function getCarInfoById(/* code here */) {
-  /* code here */
+function getCarInfoById(inventory, carId) {
+  for (let i = 0; i < inventory.length; i++) {
+    let car = inventory[i];
+    if (car.id == carId) {
+      return `This is a ${car.car_make} ${car.car_model}`
+    }
+  }
 }
+getCarInfoById(inventory, 1);
 
 /**
  * ### Challenge `getOlderCars`
@@ -308,9 +315,18 @@ function getCarInfoById(/* code here */) {
  * with a `car_year` which is at most the given desired max year,
  * in the same order as they appear in the original inventory.
 */
-function getOlderCars(/* code here */) {
-  /* code here */
+
+function getOlderCars(inventory, maxYear) {
+  let allCars = [];
+  for (let i = 0; i < inventory.length; i++) {
+    let car = inventory[i];
+    if (car.car_year <= maxYear) {
+      allCars.push(car)
+    }
+  }
+  return allCars;
 }
+getOlderCars(inventory, 2000);
 
 /**
  * ### Challenge `getGermanCars`
