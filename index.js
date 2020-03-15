@@ -341,9 +341,24 @@ getOlderCars(inventory, 2000);
  * made by either `Audi` or `Mercedes-Benz` or `Volkswagen` or `BMW`,
  * in the same order as they appear in the original inventory.
 */
-function getGermanCars(/* code here */) {
+function getGermanCars(inventory) {
   /* code here */
+  let germanCars = [];
+  for (let i = 0; i < inventory.length; i++) {
+    let car = inventory[i];
+    //if (car.car_make === 'Audi' || car.car_make === 'Mercedes-Benz' || car.car_make === 'Volkswagen' || car.car_make === 'BMW') {
+    if (['Audi', 'Mercedes-Benz', 'Volkswagen', 'BMW'].indexOf(car.car_make) > -1) {
+      germanCars.push(car);
+    }
+  }
+  return germanCars;
 }
+getGermanCars(inventory);
+
+function getGermanCars2(inventory) {
+  return inventory.filter(car => (['Audi', 'Mercedes-Benz', 'Volkswagen', 'BMW'].indexOf(car.car_make) > -1));
+}
+getGermanCars2(inventory);
 
 /**
  * ### Challenge `carMaker`
@@ -358,9 +373,15 @@ function getGermanCars(/* code here */) {
  *         (1) causes the odometer in the object to be increased by the distance,
  *         (2) returns the updated value of the `odometer`.
 */
-function carMaker(/* code here */) {
+function carMaker(odometer) {
   /* code here */
+  let car = {
+    odometer: "",
+    drive: 1000
+  };
+  return "The Cars Odometer is " + car.drive * odometer;
 }
+carMaker(1000);
 
 /// ////// END OF CHALLENGE /////////
 /// ////// END OF CHALLENGE /////////
